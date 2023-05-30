@@ -16,11 +16,17 @@ function App() {
     
   }
 
-  const toevoegenDoc = async () => {
-    await addDoc(collection(db, "post"), { title: title, description: description})
+  const addDoc = async () => {
+    const postDoc = collection(db, "post", { title: title, description: description})
+    await addDoc(postDoc)
   }
 
-  const loginMetGoogle = async () => {
+  const deleteDoc = async (id) => {
+    const postDeleteDoc = doc(db, "posts", id)
+    await deleteDoc(postDeleteDoc);
+  }
+
+  const loginWithGoogle = async () => {
     const credentials = await signInWithPopUp(auth, googleProvider);
     setCredentials(credentials);
     console.log(credentials);
