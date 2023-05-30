@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import {getDocs, collection, doc} from 'firebase/firestore';
 import { db } from './config/firebase';
 
+
 function App() {
-  const [posts, getPosts] = posts;
-  const [description, getDescription] = description;
+  const [getTitle, setTitle] = useState("");
+  const [getTask, setTask] = useState("");
+  const [getStatus, setStatus] = useState("To do");
 
   const getDocuments = () => {
     const q = query(collection(db, "posts"))
@@ -16,14 +19,24 @@ function App() {
     
   }
 
-  const toevoegenDoc = async () => {
+  const addDoc = async () => {
     await addDoc(collection(db, "post"), { title: title, description: description})
   }
 
-  const loginMetGoogle = async () => {
+  const loginWithGoogle = async () => {
     const credentials = await signInWithPopUp(auth, googleProvider);
     setCredentials(credentials);
     console.log(credentials);
+  }
+
+  const createPost = async () => {
+    await addDoc(postCollectionRef,
+      {title: getTitle,
+      description: getDescription,
+      date: setDate,
+      author:
+      {name: auth.CurrentUser.displayName, id: auth.currentUser.id}
+    });
   }
 
   useEffect(() => {
