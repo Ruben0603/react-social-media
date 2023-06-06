@@ -4,6 +4,8 @@ import { getDocs, collection, doc, query, addDoc } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { auth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {Overview, Details} from "./App.jsx";
+
 import './App.css';
 
 
@@ -16,6 +18,8 @@ function App() {
   //const [getTask, setTask] = useState("");
   //const [getStatus, setStatus] = useState("To do");
   const [postMessage, setPostMessage] = useState([]);
+  const [credentials, setCredentials] = useState();
+  const [postCollectionRef, setPostCollectionRef] = useState();
 
   const getDocuments = () => {
     const q = query(collection(db, "posts"))
@@ -23,27 +27,26 @@ function App() {
       const documentList = firebaseResponse.docs.map(doc.data());
       setPosts(documentList);
     })
-    
   }
 
   const addDoc = async () => {
-    await addDoc(collection(db, "post"), { title: getTitle, description: getDescription})
+    await addDoc(collection(db, "post"), { title: getTitle, description: getDescription })
   }
 
   const loginWithGoogle = async () => {
-    const credentials = await signInWithPopUp(auth, googleProvider);
+    const credentials = await signInWithPopup(auth, GoogleAuthProvider);
     setCredentials(credentials);
     console.log(credentials);
   }
 
   const createPost = async () => {
     await addDoc(postCollectionRef,
-      {title: getTitle,
-      description: getDescription,
-      date: getDate,
-      author:
-      {name: auth.CurrentUser.displayName, id: auth.currentUser.id}
-    });
+      {
+        title: getTitle,
+        description: getDescription,
+        date: getDate,
+        author: { name: auth.currentUser.displayName, id: auth.currentUser.id }
+      });
   }
 
   useEffect(() => {
@@ -51,19 +54,20 @@ function App() {
   }, [])
 
   return (
-  <>
-    <Routes>
-      <Route path="/" element={<Overview />} />
-      <Route path="/" element={<div>About!</div>} />
-      <Route path="/*" element={<Details />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Overview />} />
+        <Route path="/" element={<div>About!</div>} />
+        <Route path="/*" element={<Details />} />
+      </Routes>
       <div className="App">
         <h1>Mijn firebase data</h1>
         <div>
           {postMessage.map(post => {
             return (
-              <div>
+              <div key={post.id}>
                 {post.title}
+                {post.description}
               </div>
             );
           })}
