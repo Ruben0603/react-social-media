@@ -1,11 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from 'react-router-dom';
+import { getDocs, collection, doc, query, addDoc } from 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { auth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import './App.css';
-import { db } from './config/firebase';
+
 
 function App() {
-  const [posts, getPosts] = posts;
-  const [description, getDescription] = description;
+  const [db, setdb] = useState();
+  const [getPost, setPosts] = useState();
+  const [getTitle, setTitle] = useState("");
+  const [getDescription, setDescription] = useState("");
+  const [getDate, setDate] = useState();
+  //const [getTask, setTask] = useState("");
+  //const [getStatus, setStatus] = useState("To do");
+  const [postMessage, setPostMessage] = useState([]);
 
   const getDocuments = () => {
     const q = query(collection(db, "posts"))
@@ -30,6 +40,16 @@ function App() {
     const credentials = await signInWithPopUp(auth, googleProvider);
     setCredentials(credentials);
     console.log(credentials);
+  }
+
+  const createPost = async () => {
+    await addDoc(postCollectionRef,
+      {title: getTitle,
+      description: getDescription,
+      date: getDate,
+      author:
+      {name: auth.CurrentUser.displayName, id: auth.currentUser.id}
+    });
   }
 
   useEffect(() => {
