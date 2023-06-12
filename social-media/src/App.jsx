@@ -30,7 +30,13 @@ function App() {
   }
 
   const addDoc = async () => {
-    await addDoc(collection(db, "post"), { title: getTitle, description: getDescription })
+    const postDoc = collection(db, "post", { title: title, description: description})
+    await addDoc(postDoc)
+  }
+
+    const deleteDoc = async (id) => {
+    const postDeleteDoc = doc(db, "posts", id)
+    await deleteDoc(postDeleteDoc);
   }
 
   const loginWithGoogle = async () => {
