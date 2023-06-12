@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from 'react-router-dom';
-import { getDocs, collection, doc, query, addDoc } from 'firebase/firestore';
+import { getDocs, collection, doc, query, addDoc, arrayUnion } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { auth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth, db, GoogleAuthProvider } from "./config/firebase";
+import { signInWithPopup } from "firebase/auth";
 import {Overview, Details} from "./App.jsx";
+import { updateDoc } from 'firebase/firestore';
 
 import './App.css';
 
@@ -29,10 +31,10 @@ function App() {
     })
   }
 
-  const addDoc = async () => {
+  /*const addDoc = async () => {
     const postDoc = collection(db, "post", { title: title, description: description})
     await addDoc(postDoc)
-  }
+  }*/
 
     const deleteDoc = async (id) => {
     const postDeleteDoc = doc(db, "posts", id)
@@ -58,13 +60,20 @@ function App() {
   useEffect(() => {
     getDocuments();
   }, [])
+  
+  const like = async (postId) => {
+  const docRef = doc(db, "posts", postId);
+  await updateDoc(docRef, {likes: arrayUnion(credentials.user.id) });
+
+  getPost();
+}
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Overview />} />
+        {/*<Route path="/" element={<Overview />} />
         <Route path="/" element={<div>About!</div>} />
-        <Route path="/*" element={<Details />} />
+        <Route path="/*" element={<Details />} />*/}
       </Routes>
       <div className="App">
         <h1>Mijn firebase data</h1>
@@ -75,6 +84,9 @@ function App() {
                 {post.title}
                 {post.description}
               </div>
+              //{credentials ?
+
+              //}
             );
           })}
         </div>
@@ -83,4 +95,10 @@ function App() {
   )
 }
 
+
+
+
+
+
 export default App;
+
