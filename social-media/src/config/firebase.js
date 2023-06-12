@@ -10,6 +10,7 @@ import { auth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyB0gooQzfMTrHnR-9ERkP0P-rBYm3LS8d8",
   authDomain: "social-media-aeef6.firebaseapp.com",
+  databaseURL: "",
   projectId: "social-media-aeef6",
   storageBucket: "social-media-aeef6.appspot.com",
   messagingSenderId: "208622485171",
