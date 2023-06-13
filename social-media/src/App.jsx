@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 import { getDocs, collection, doc, query, addDoc, arrayUnion } from 'firebase/firestore';
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { auth, db, GoogleAuthProvider } from "./config/firebase";
 import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
-import {Overview, Register, Details} from "./App.jsx";
 import { updateDoc } from 'firebase/firestore';
-
 import './App.css';
+import { auth, googleProvider } from "./config/firebase";
+
+
+import Overview from './Overview';
+import Register from './Register';
+import Login from './Login';
+
+//import { Overview, Register, Login } from "./App";
+//import { initializeApp } from "firebase/app";
+//import { getFirestore } from "firebase/firestore";
 
 
 function App() {
+  const [user, setUser] = useState();
   const [db, setdb] = useState();
+  
   const [getPost, setPosts] = useState();
   const [getTitle, setTitle] = useState("");
   const [getDescription, setDescription] = useState("");
@@ -42,7 +49,7 @@ function App() {
   }
 
   const loginWithGoogle = async () => {
-    const credentials = await signInWithPopup(auth, GoogleAuthProvider);
+    const credentials = await signInWithPopup(auth, googleProvider);
     setCredentials(credentials);
     console.log(credentials);
   }
@@ -84,8 +91,8 @@ useEffect(() => {
     <>
       <Routes>
         <Route path="/:userId" element={<Overview credentials={user}/>} />
-        <Route path="/register" element={<Register credentials={login} />} />
-        <Route path="/*" element={<Details />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <div className="App">
         <h1>Mijn firebase data</h1>
@@ -107,10 +114,4 @@ useEffect(() => {
   )
 }
 
-
-
-
-
-
 export default App;
-
