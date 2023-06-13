@@ -27,5 +27,5 @@ export const googleProvider = new GoogleAuthProvider();
 export const auth = getAuth();
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
-
 export default app;
+
