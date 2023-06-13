@@ -4,8 +4,8 @@ import { getDocs, collection, doc, query, addDoc, arrayUnion } from 'firebase/fi
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { auth, db, GoogleAuthProvider } from "./config/firebase";
-import { signInWithPopup } from "firebase/auth";
-import {Overview, Details} from "./App.jsx";
+import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import {Overview, Register, Details} from "./App.jsx";
 import { updateDoc } from 'firebase/firestore';
 
 import './App.css';
@@ -68,12 +68,24 @@ function App() {
   getPost();
 }
 
+useEffect(() => {
+  return onAuthStateChanged(auth, (user) => {
+    if (user){
+      setUser(user);
+      console.log("Wel user")
+    }else{
+      setUser(null)
+      console.log("Geen user")
+    }
+  });
+})
+
   return (
     <>
       <Routes>
-        {/*<Route path="/" element={<Overview />} />
-        <Route path="/" element={<div>About!</div>} />
-        <Route path="/*" element={<Details />} />*/}
+        <Route path="/:userId" element={<Overview credentials={user}/>} />
+        <Route path="/register" element={<Register credentials={login} />} />
+        <Route path="/*" element={<Details />} />
       </Routes>
       <div className="App">
         <h1>Mijn firebase data</h1>
