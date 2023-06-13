@@ -3,11 +3,11 @@ import './register.css';
 import { createUserWithEmailAndPassword} from "firebase/auth";
 import { auth } from "firebase/auth";
 
-function Register = () => {
+function Register () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [registerComplete, setRegisterComplete] = useState("");
-}
+};
 
 return (
     <div className="registerWrapper">
