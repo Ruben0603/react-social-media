@@ -24,31 +24,30 @@ function App() {
   const [getTitle, setTitle] = useState("");
   const [getDescription, setDescription] = useState("");
   const [getDate, setDate] = useState();
-  //const [getTask, setTask] = useState("");
-  //const [getStatus, setStatus] = useState("To do");
   const [postMessage, setPostMessage] = useState([]);
   const [credentials, setCredentials] = useState();
-  const [postCollectionRef, setPostCollectionRef] = useState();
+  const [postCollectionRef, setPostCollectionRef] = useState(collection(db, "posts"));
 
   const getDocuments = () => {
-    const q = query(collection(db, "posts"))
-    getDocs(q).then(firebaseResponse => {
-      const documentList = firebaseResponse.docs.map(doc.data());
+    const postsCollectionRef = collection(db, "posts");
+    getDocs(postsCollectionRef).then(firebaseResponse => {
+      const documentList = firebaseResponse.docs.map(doc => doc.data());
       setPosts(documentList);
-    })
+    });
   }
+    
 
-  /*const addDoc = async () => {
-    const postDoc = collection(db, "post", { title: title, description: description})
+  const addDoc = async () => {
+    const postDoc = setPostCollectionRef(db, "post", {title: getTitle, description: getDescription})
     await addDoc(postDoc)
-  }*/
+  }
 
     const deleteDoc = async (id) => {
     const postDeleteDoc = doc(db, "posts", id)
     await deleteDoc(postDeleteDoc);
   }
 
-  const loginWithGoogle = async () => {
+  const signInWithGoogle = async () => {
     const credentials = await signInWithPopup(auth, googleProvider);
     setCredentials(credentials);
     console.log(credentials);
