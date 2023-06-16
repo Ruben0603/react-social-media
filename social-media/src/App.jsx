@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router';
 import { getDocs, collection, doc, query, addDoc, arrayUnion } from 'firebase/firestore';
 import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { updateDoc } from 'firebase/firestore';
-import './App.css';
 import { auth, googleProvider } from "./config/firebase";
 
 

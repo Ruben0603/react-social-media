@@ -1,6 +1,6 @@
 import React from 'react';
 import { signInWithGoogle } from './config/firebase';
-import './App.css';
+import './style/App.css';
 
 const Login = () => {
   return (
