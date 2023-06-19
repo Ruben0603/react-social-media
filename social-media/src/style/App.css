@@ -1,1 +1,15 @@
-/*# sourceMappingURL=App.css.map */
+.App {
+  background-color: yellow;
+}
+
+header {
+  background-color: red;
+  width: 100%;
+  height: 75px;
+}
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}/*# sourceMappingURL=App.css.map */

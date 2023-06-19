@@ -15,5 +15,6 @@ header{
     
     nav{
         @include center();
+        text-decoration: none;
     }
 }
