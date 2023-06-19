@@ -1,11 +1,11 @@
 import React from 'react';
-import { loginWithGoogle } from '../services/firebase';
-import '../App.css';
+import { signInWithGoogle } from './config/firebase';
+import './style/App.css';
 
 const Login = () => {
   return (
     <div>
-      <button className="button" onClick={loginWithGoogle}>
+      <button className="button" onClick={signInWithGoogle}>
         <i className="fab fa-google"></i> Sign in with Google
       </button>
     </div>

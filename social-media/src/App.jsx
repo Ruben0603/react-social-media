@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router';
 import { getDocs, collection, doc, query, addDoc, arrayUnion } from 'firebase/firestore';
 import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { updateDoc } from 'firebase/firestore';
-import './App.css';
+import './style/App.css';
 import { auth, googleProvider } from "./config/firebase";
 
 
@@ -63,10 +63,6 @@ function App() {
         author: { name: auth.currentUser.displayName, id: auth.currentUser.id }
       });
   }
-
-  useEffect(() => {
-    getDocuments();
-  }, [])
   
   const like = async (postId) => {
   const docRef = doc(db, "posts", postId);
@@ -95,7 +91,7 @@ useEffect(() => {
         <Route path="/login" element={<Login />} />
       </Routes>
       <div className="App">
-        <h1>Mijn firebase data</h1>
+        <h1>Social Media</h1>
         <div>
           {postMessage.map(post => {
             return (
