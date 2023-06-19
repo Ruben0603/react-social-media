@@ -5,7 +5,7 @@ function header(){
 
     return(
         <>
-            <div className="header">
+            <header>
                 <nav>
                     <ul>
                         <Link to="/overview">Home</Link>
@@ -13,7 +13,7 @@ function header(){
                         <Link to="/login">Login</Link>
                     </ul>
                 </nav>
-            </div>
+            </header>
         </>
     )
 }

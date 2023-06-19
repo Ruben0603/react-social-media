@@ -91,7 +91,7 @@ useEffect(() => {
         <Route path="/login" element={<Login />} />
       </Routes>
       <div className="App">
-        <h1>Social Media</h1>
+        <h1>Mijn Firebase data</h1>
         <div>
           {postMessage.map(post => {
             return (
