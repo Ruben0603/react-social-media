@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../style/App.css";
 
-function header(){
+function Header(){
 
     return(
         <>
@@ -18,4 +18,4 @@ function header(){
     )
 }
 
-export default header;
+export default Header;
