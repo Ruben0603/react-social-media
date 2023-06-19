@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router';
 import { getDocs, collection, doc, query, addDoc, arrayUnion } from 'firebase/firestore';
 import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { updateDoc } from 'firebase/firestore';
+import './App.css';
 import { auth, googleProvider } from "./config/firebase";
 
 
@@ -23,30 +24,31 @@ function App() {
   const [getTitle, setTitle] = useState("");
   const [getDescription, setDescription] = useState("");
   const [getDate, setDate] = useState();
+  //const [getTask, setTask] = useState("");
+  //const [getStatus, setStatus] = useState("To do");
   const [postMessage, setPostMessage] = useState([]);
   const [credentials, setCredentials] = useState();
-  const [postCollectionRef, setPostCollectionRef] = useState(collection(db, "posts"));
+  const [postCollectionRef, setPostCollectionRef] = useState();
 
   const getDocuments = () => {
-    const postsCollectionRef = collection(db, "posts");
-    getDocs(postsCollectionRef).then(firebaseResponse => {
-      const documentList = firebaseResponse.docs.map(doc => doc.data());
+    const q = query(collection(db, "posts"))
+    getDocs(q).then(firebaseResponse => {
+      const documentList = firebaseResponse.docs.map(doc.data());
       setPosts(documentList);
-    });
+    })
   }
-    
 
-  const addDoc = async () => {
-    const postDoc = setPostCollectionRef(db, "post", {title: getTitle, description: getDescription})
+  /*const addDoc = async () => {
+    const postDoc = collection(db, "post", { title: title, description: description})
     await addDoc(postDoc)
-  }
+  }*/
 
     const deleteDoc = async (id) => {
     const postDeleteDoc = doc(db, "posts", id)
     await deleteDoc(postDeleteDoc);
   }
 
-  const signInWithGoogle = async () => {
+  const loginWithGoogle = async () => {
     const credentials = await signInWithPopup(auth, googleProvider);
     setCredentials(credentials);
     console.log(credentials);
