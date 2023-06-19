@@ -1,15 +1,14 @@
 import { useState } from "react";
-import './register.css';
+import './Register.css';
 import { createUserWithEmailAndPassword} from "firebase/auth";
 import { auth } from "firebase/auth";
 
-function Register () => {
+function Register () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [registerComplete, setRegisterComplete] = useState("");
-};
 
-return (
+return ( 
     <div className="registerWrapper">
         <div className="registerLeft">
             <h3 className="registerLogo">Social Media</h3>
@@ -25,5 +24,5 @@ return (
             </div>
         </div>
     </div>
-)
+)};
 
