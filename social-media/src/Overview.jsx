@@ -1,7 +1,9 @@
 import { Header } from "./includes/header";
 
 function Overview() {
-    // Overview component code...
+    <>
+      <Header/>
+    </>
   }
   
   export default Overview;
