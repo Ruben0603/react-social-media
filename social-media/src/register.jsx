@@ -18,7 +18,7 @@ return (
             <div className="registerBox">
                 <input placeholder="Email" type="email" className="registerInput" onChange={(e) => setEmail(e.target.value)} />
                 <input placeholder="Password" type="password" className="registerInput" onChange={(e) => setPassword(e.target.value)} />
-                <button className="registerButton" onClick={register}>Register</button>
+                <button className="registerButton" onClick={Register}>Register</button>
                 <button className="registerLoginButton">Log into Account</button>
                 <span className="registerForgot">Forgot Password?</span>
             </div>
@@ -26,3 +26,4 @@ return (
     </div>
 )};
 
+export default Register;
