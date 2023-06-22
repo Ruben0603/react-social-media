@@ -48,7 +48,7 @@ function Register() {
           <button className="registerButton" onClick={handleRegister}>
             Register
           </button>
-          <button className="registerLoginButton" onClick={"Login.jsx"}>
+          <button className="registerLoginButton" onClick={"Login"}>
             Log into Account
           </button>
         </div>
