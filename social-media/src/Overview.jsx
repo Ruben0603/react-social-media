@@ -60,7 +60,7 @@ function Overview() {
       <Header />
       <div className="overview">
         <div>
-          <h1>Show posts</h1>
+          <h1 className="text-3xl font-bold underline">Show posts</h1>
           <input
             type="text"
             placeholder="Search..."
@@ -112,7 +112,7 @@ function Overview() {
               onChange={(e) => setAuthor(e.target.value)}
             />
           </div>
-          <button type="submit">Create post</button>
+          <button className="text-3xl font-bold underline border-hidden background-blue-500" type="submit">Create post</button>
         </form>
       </div>
     </>
