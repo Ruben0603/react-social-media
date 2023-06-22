@@ -1,6 +1,6 @@
 import Header from "./includes/Header";
 import React, { useEffect, useState } from "react";
-import { getDocs, collection, addDoc, arrayUnion, serverTimestamp, query, where, onSnapshot } from "firebase/firestore";
+import { getDocs, collection, addDoc, arrayUnion, serverTimestamp, query, where, onSnapshot } from "@firebase/firestore";
 import './style/App.css';
 import { db } from "./config/firebase";
 

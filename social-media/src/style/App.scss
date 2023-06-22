@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 $primarycolor: rgba(128, 128, 128, 0.158);
 $secundarycolor: rgb(66, 183, 222);
 
@@ -38,3 +42,4 @@ header{
 button{
     width: 60px;
 }
+

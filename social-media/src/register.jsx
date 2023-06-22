@@ -1,6 +1,9 @@
+import Header from "./includes/Header";
 import React, { useState } from "react";
 import "./style/App.css";
-import { createUserWithEmailAndPassword, auth } from "firebase/auth";
+import Login from "./Login";
+import { createUserWithEmailAndPassword } from "@firebase/auth";
+import { auth } from "./config/firebase";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -24,9 +27,11 @@ function Register() {
   };
 
   return (
-    <div className="registerWrapper">
+    <>
+    <Header />
+    <div className="registerWrapper  ">
       <div className="registerLeft">
-        <h3 className="registerLogo">Social Media</h3>
+        <h3 className="text-3xl font-bold underline">Social Media</h3>
         <span className="registerDesc">
           Connect with friends and the world around you on Social Media.
         </span>
@@ -48,13 +53,14 @@ function Register() {
           <button className="registerButton" onClick={handleRegister}>
             Register
           </button>
-          <button className="registerLoginButton" onClick={"Login"}>
+          <button className="registerLoginButton" onClick={Login}>
             Log into Account
           </button>
         </div>
         {registerComplete && <p>{registerComplete}</p>}
       </div>
     </div>
+    </>
   );
 }
 

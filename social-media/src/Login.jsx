@@ -6,7 +6,7 @@ import './style/App.css';
 const Login = () => {
   return (
     <>
-      <Header/>
+      <Header />
       <div>
         <button className="button" onClick={signInWithGoogle}>
           <i className="fab fa-google"></i> Sign in with Google
