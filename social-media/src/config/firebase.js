@@ -11,13 +11,13 @@ import { GoogleAuthProvider, getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB0gooQzfMTrHnR-9ERkP0P-rBYm3LS8d8",
-  authDomain: "social-media-aeef6.firebaseapp.com",
-  databaseURL: "",
-  projectId: "social-media-aeef6",
-  storageBucket: "social-media-aeef6.appspot.com",
-  messagingSenderId: "208622485171",
-  appId: "1:208622485171:web:b871be2746e67804957ac6"
+  apiKey: "AIzaSyBwRBKpUdLWZPkilOki5YkwxnbB6_IoZeg",
+  authDomain: "social-a1e6a.firebaseapp.com",
+  projectId: "social-a1e6a",
+  storageBucket: "social-a1e6a.appspot.com",
+  messagingSenderId: "1045077261494",
+  appId: "1:1045077261494:web:b5e4ab07560bb0d6ca3a17",
+  measurementId: "G-09G708PZNY"
 };
 
 // Initialize Firebase
@@ -29,4 +29,3 @@ export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 
 export default app;
-
