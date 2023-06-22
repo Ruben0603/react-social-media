@@ -4,7 +4,7 @@ import './style/App.css';
 
 
 import Overview from './Overview';
-import Register from './register';
+import Register from './Register';
 import Login from './Login';
 
 //import { Overview, Register, Login } from "./App";

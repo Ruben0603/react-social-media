@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./Register.css";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "firebase/auth";
+import "./style/App.css";
+import { createUserWithEmailAndPassword, auth } from "firebase/auth";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -49,7 +48,7 @@ function Register() {
           <button className="registerButton" onClick={handleRegister}>
             Register
           </button>
-          <button className="registerLoginButton" onClick={"Login.jsx"}>
+          <button className="registerLoginButton" onClick={"Login"}>
             Log into Account
           </button>
         </div>
