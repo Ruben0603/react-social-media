@@ -7,11 +7,6 @@ import Overview from './Overview';
 import Register from './Register';
 import Login from './Login';
 
-//import { Overview, Register, Login } from "./App";
-//import { initializeApp } from "firebase/app";
-//import { getFirestore } from "firebase/firestore";
-
-
 function App() {
   const [user] = useState();
    
