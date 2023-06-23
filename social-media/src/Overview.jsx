@@ -93,68 +93,81 @@ function Overview() {
   return (
     <>
       <Header />
-      <div className="overview">
+      <div className="flex justify-center">
+      <div className="">
         <div>
-          <h1 className="">Show posts</h1>
-          <input
+          <h1 className="flex justify-center mt-8 mb-8">Show posts</h1>
+          <label className="flex justify-start ml-12">Search</label>
+          <input className="rounded-md border border-2 border-slate-500 mt-0.5 ml-12"
             type="text"
             placeholder="Search..."
             value={searchTerm}
             onChange={handleSearch}
           />
           {filteredPosts.map((post) => (
-            <>
-              <div key={post.id}>
-                <h3>{post.title}</h3>
+            <div className="flex justify-center flex-col">
+              <div className="flex justify-center mt-2" key={post.id}>
+                <h3 className="">{post.title}</h3>
                 <p>{post.description}</p>
                 <p>{post.date}</p>
                 <p>{post.author}</p>
               </div>
-              <button className="" onClick={like}>Like</button>
-            </>
+              <div className="flex justify-center">
+                <button className="rounded-lg font-bold bg-blue-300 p-1 mr-2" onClick={like}>Like</button>
+                <button className="rounded-lg font-bold bg-blue-300 p-1" type="submit" onClick={deletePost}>Delete post</button>
+              </div>
+            </div>
           ))}
         </div>
-        <h1>Create a post</h1>
-        <form action={createPost}>
-          <div>
-            <label className="title">Title:</label>
-            <input
-              type="text"
-              id="title"
-              value={getTitle}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-          <div>
-            <label className="description">Description:</label>
-            <textarea
-              id="description"
-              value={getDescription}
-              onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
-          </div>
-          <div>
-            <label className="date">Date:</label>
-            <input
-              type="date"
-              id="date"
-              value={getDate}
-              onChange={(e) => setDate(e.target.value)}
-            />
-          </div>
-          <div>
-            <label className="author">Author:</label>
-            <input
-              type="text"
-              id="author"
-              value={getAuthor}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
-          </div>
-          <button className="text-1xl border-solid font-bold" type="submit" onClick={getDocuments}>Create post</button>
-          <button className="text-1xl border-solid font-bold" type="submit" onClick={deletePost}>Delete post</button>
-        </form>
-        <form action={deletePost}></form>
+        <div className="bg-slate-200 p-8 m-4">
+          <h1 className="mt-2 mb-4 flex justify-center">Create a post</h1>
+          <div className="flex justify-center">
+          <form className="" action={createPost}>
+            <div>
+              <label className="flex justify-start">Title</label>
+              <input className="rounded-md border border-2 border-slate-500"
+                type="text"
+                id="title"
+                placeholder="Title..."
+                value={getTitle}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="mt-2 flex justify-start">Description</label>
+              <textarea className="rounded-md border border-2 border-slate-500"
+                id="description"
+                value={getDescription}
+                placeholder="Description..."
+                onChange={(e) => setDescription(e.target.value)}
+              ></textarea>
+            </div>
+            <div>
+              <label className="mt-2 flex justify-start">Date</label>
+              <input className="rounded-md border border-2 border-slate-500"
+                type="date"
+                id="date"
+                value={getDate}
+                placeholder="Date..."
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="mt-2 flex justify-start">Author</label>
+              <input className="rounded-md border border-2 border-slate-500"
+                type="text"
+                id="author"
+                value={getAuthor}
+                placeholder="Author..."
+                onChange={(e) => setAuthor(e.target.value)}
+              />
+            </div>
+            <button className="rounded-lg font-bold bg-blue-300 p-1 mt-2" type="submit" onClick={getDocuments}>Create post</button>
+            
+          </form>
+        </div>
+        </div>
+      </div>
       </div>
     </>
   );
