@@ -1,0 +1,57 @@
+@tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  a {
+    @apply text-blue-600 underline;
+  }
+}
+
+@tailwind components;
+
+@tailwind utilities;
+
+$primarycolor: rgba(128, 128, 128, 0.158);
+$secundarycolor: rgb(66, 183, 222);
+
+@mixin center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overview{
+    background-color: white;
+}
+
+header{
+    background-color: $primarycolor;
+    width: 100%;
+    height: 75px;
+    nav{
+        @include center();
+        ul{
+            @include center();
+            
+            li{
+                display: flex;
+                justify-content: space-around;
+                margin-left: 4%;
+                margin-right: 4%;
+                list-style: none;
+                a{
+                    color: black;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
