@@ -5,26 +5,26 @@ import Login from "./Login";
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "./config/firebase";
 
-function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [registerComplete, setRegisterComplete] = useState("");
+// function Register() {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [registerComplete, setRegisterComplete] = useState("");
 
-  const handleRegister = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Registration successful
-        const user = userCredential.user;
-        console.log("Registered user:", user);
-        setRegisterComplete("Registration successful");
-      })
-      .catch((error) => {
-        // Registration failed
-        const errorMessage = error.message;
-        console.log("Registration error:", errorMessage);
-        setRegisterComplete(errorMessage);
-      });
-  };
+//   const handleRegister = () => {
+//     createUserWithEmailAndPassword(auth, email, password)
+//       .then((userCredential) => {
+//         // Registration successful
+//         const user = userCredential.user;
+//         console.log("Registered user:", user);
+//         setRegisterComplete("Registration successful");
+//       })
+//       .catch((error) => {
+//         // Registration failed
+//         const errorMessage = error.message;
+//         console.log("Registration error:", errorMessage);
+//         setRegisterComplete(errorMessage);
+//       });
+//   };
 
   return (
     <>
