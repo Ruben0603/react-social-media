@@ -1,6 +1,7 @@
 import Header from "./includes/Header";
 import React, { useEffect, useState } from "react";
-import { getDocs, collection, addDoc, updateDoc, arrayUnion, serverTimestamp, query, where, onSnapshot, onAuthStateChanged } from "firebase/firestore";
+import { getDocs, collection, addDoc, updateDoc, arrayUnion, serverTimestamp, query, where, onSnapshot } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/firestore";
 import './style/App.css';
 import { db, auth } from "./config/firebase";
 
@@ -160,9 +161,3 @@ function Overview() {
 }
 
 export default Overview;
-
-//   // const loginWithGoogle = async () => {
-//   //   const credentials = await signInWithPopup(auth, googleProvider);
-//   //   setCredentials(credentials);
-//   //   console.log(credentials);
-//   // }
