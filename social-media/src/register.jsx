@@ -1,7 +1,9 @@
-// import React, { useState } from "react";
-// import "./style/App.css";
-// import { createUserWithEmailAndPassword, auth } from "firebase/auth";
-// import Header from "./includes/Header";
+import Header from "./includes/Header";
+import React, { useState } from "react";
+import "./style/App.css";
+import Login from "./Login";
+import { createUserWithEmailAndPassword } from "@firebase/auth";
+import { auth } from "./config/firebase";
 
 // function Register() {
 //   const [email, setEmail] = useState("");
@@ -24,42 +26,42 @@
 //       });
 //   };
 
-//   return (
-//     <>
-//       <Header/>
-//       <div className="registerWrapper">
-//         <div className="registerLeft">
-//           <h3 className="registerLogo">Social Media</h3>
-//           <span className="registerDesc">
-//             Connect with friends and the world around you on Social Media.
-//           </span>
-//         </div>
-//         <div className="registerRight">
-//           <div className="registerBox">
-//             <input
-//               placeholder="Email"
-//               type="email"
-//               className="registerInput"
-//               onChange={(e) => setEmail(e.target.value)}
-//             />
-//             <input
-//               placeholder="Password"
-//               type="password"
-//               className="registerInput"
-//               onChange={(e) => setPassword(e.target.value)}
-//             />
-//             <button className="registerButton" onClick={handleRegister}>
-//               Register
-//             </button>
-//             {/* <button className="registerLoginButton" onClick={"Login"}>
-//               Log into Account
-//             </button> */}
-//           </div>
-//           {registerComplete && <p>{registerComplete}</p>}
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
+  return (
+    <>
+    <Header />
+    <div className="registerWrapper  ">
+      <div className="registerLeft">
+        <h3 className="text-3xl font-bold underline">Social Media</h3>
+        <span className="registerDesc">
+          Connect with friends and the world around you on Social Media.
+        </span>
+      </div>
+      <div className="registerRight">
+        <div className="registerBox">
+          <input
+            placeholder="Email"
+            type="email"
+            className="registerInput"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            className="registerInput"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="registerButton" onClick={handleRegister}>
+            Register
+          </button>
+          <button className="registerLoginButton" onClick={Login}>
+            Log into Account
+          </button>
+        </div>
+        {registerComplete && <p>{registerComplete}</p>}
+      </div>
+    </div>
+    </>
+  );
+}
 
-// export default Register;
+export default Register;
