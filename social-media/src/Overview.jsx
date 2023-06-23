@@ -1,9 +1,10 @@
 import Header from "./includes/Header";
 import React, { useEffect, useState } from "react";
 import { getDocs, collection, addDoc, updateDoc, arrayUnion, serverTimestamp, query, where, onSnapshot } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 import './style/App.css';
 import { db, auth } from "./config/firebase";
+import images from "./images/gymbackground.avif";
 
 function Overview() {
   const [getTitle, setTitle] = useState("");
@@ -94,11 +95,13 @@ function Overview() {
     <>
       <Header />
       <div className="flex justify-center">
-      <div className="">
-        <div>
+        <div className="bg-center">
+          <img src={images} alt="" />
+        </div>
+        <div className="bg-slate-200 p-8 m-4"> 
           <h1 className="flex justify-center mt-8 mb-8">Show posts</h1>
           <label className="flex justify-start ml-12">Search</label>
-          <input className="rounded-md border border-2 border-slate-500 mt-0.5 ml-12"
+          <input className="rounded-md border border-2 border-slate-500"
             type="text"
             placeholder="Search..."
             value={searchTerm}
@@ -106,9 +109,9 @@ function Overview() {
           />
           {filteredPosts.map((post) => (
             <div className="flex justify-center flex-col">
-              <div className="flex justify-center mt-2" key={post.id}>
+              <div className="flex flex-col justify-center mt-2" key={post.id}>
                 <h3 className="">{post.title}</h3>
-                <p>{post.description}</p>
+                <p>{post.discription}</p>
                 <p>{post.date}</p>
                 <p>{post.author}</p>
               </div>
@@ -119,6 +122,8 @@ function Overview() {
             </div>
           ))}
         </div>
+      </div>
+      <div className="flex justify-center">
         <div className="bg-slate-200 p-8 m-4">
           <h1 className="mt-2 mb-4 flex justify-center">Create a post</h1>
           <div className="flex justify-center">
@@ -162,12 +167,10 @@ function Overview() {
                 onChange={(e) => setAuthor(e.target.value)}
               />
             </div>
-            <button className="rounded-lg font-bold bg-blue-300 p-1 mt-2" type="submit" onClick={getDocuments}>Create post</button>
-            
-          </form>
+            <button className="rounded-lg font-bold bg-blue-300 p-1 mt-2" type="submit" onClick={getDocuments}>Create post</button>            
+          </form>          
         </div>
         </div>
-      </div>
       </div>
     </>
   );
