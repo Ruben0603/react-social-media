@@ -58,3 +58,18 @@ header{
         }
     }
 }
+
+.image-container {
+  position: absolute;
+  top: 1;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.image-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

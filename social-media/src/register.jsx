@@ -4,6 +4,7 @@ import "./style/App.css";
 import Login from "./Login";
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "./config/firebase";
+import images from "./images/gymbackground.avif";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -29,8 +30,8 @@ function Register() {
   return (
     <>
     <Header />
-    <div className="flex items-center flex-col justify-center ">
-      <div className="flex items-center flex-col justify-center space-y-4 h-80 ">
+    <div className="flex items-center flex-col justify-center">
+      <div className="flex items-center flex-col justify-center space-y-4 h-80">
         <div className="registerLeft">
           <div className="flex items-center space-y-2 flex-col justify-center">
             <h3 className="text-3xl font-bold underline">Social Media</h3>
@@ -40,13 +41,16 @@ function Register() {
           </div>
         </div>
         <div className="space-y-2 ">
+        
           <div className="flex space-y-2 items-center flex-col">
+            <label className="mt-2 flex justify-start">Email</label>
             <input
               placeholder="Email"
               type="email"
               className="w-64 pl-1 rounded-md border border-2 border-slate-500 m-0.5"
               onChange={(e) => setEmail(e.target.value)}
             />
+            <label className="mt-2 flex justify-start">Password</label>
             <input
               placeholder="Password"
               type="password"

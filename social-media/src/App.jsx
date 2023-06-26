@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes } from 'react-router';
 import './style/App.css';
-
-
 import Overview from './Overview';
 import Register from './Register';
 import Login from './Login';
