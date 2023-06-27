@@ -137,6 +137,7 @@ function Overview() {
   return (
     <>
       <Header/>
+      <h1 className="flex justify-center mt-8 mb-8">Home</h1>
       <div className="flex justify-center">
         <div className="image-container">
           <img src={images} alt="" />
