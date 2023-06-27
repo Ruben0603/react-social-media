@@ -5,6 +5,7 @@ import Login from "./Login";
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "./config/firebase";
 import images from "./images/gymbackground.avif";
+import { Link } from "react-router-dom";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -62,9 +63,11 @@ function Register() {
             <button className="w-20 mr-2 p-1 bg-blue-400 rounded-lg font-bold" onClick={handleRegister}>
               Register
             </button>
-            <button className="w-20 p-1 bg-green-500 rounded-lg font-bold" onClick={Login}>
-              Login
-            </button>
+            <Link to="/login">
+              <button className="w-20 p-1 bg-green-500 rounded-lg font-bold" onClick={Login}>
+                Login
+              </button>
+            </Link>
           </div>
           {registerComplete && <p>{registerComplete}</p>}
         </div>
