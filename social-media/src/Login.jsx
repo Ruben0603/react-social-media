@@ -1,19 +1,26 @@
-import Header from "./includes/Header";
-import React from 'react';
-import { signInWithGoogle } from './config/firebase';
-import './style/App.css';
+// import Header from "./includes/Header";
+// import React from 'react';
+// import { signInWithGoogle } from './config/firebase';
+// //import { link } from './Register';
 
-const Login = () => {
-  return (
-    <>
-      <Header />
-      <div>
-        <button className="button" onClick={signInWithGoogle}>
-          <i className="fab fa-google"></i> Sign in with Google
-        </button>
-      </div>
-    </>
-  );
-};
+// import './style/App.css';
 
-export default Login;
+// const Login = () => {
+//   const text = "Succesfull registed, now you can login";
+
+//   return (
+//     <>
+//       <Header/>     
+//     <div className="App">
+//       <br />
+//       <div dangerouslySetInnerHTML={{ __html: (text) }} />
+//     </div>
+
+//       <div>
+//         <button className="fab fa-google" onClick={signInWithGoogle}>Sign in with Google</button>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Login;
